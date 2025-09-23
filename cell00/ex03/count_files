@@ -1,0 +1,2 @@
+#!/bin/bash
+Is -1 | wc -1
