@@ -1,0 +1,12 @@
+#!/bin/bash
+if [$# -eq 0]; then
+   echo "No arguments supplied"
+   exit 1
+fi
+
+for arg in "$Q"; do
+    if ["$arg" = "42"]; then
+        coutinue
+    fi 
+    echo "$arg"
+done
