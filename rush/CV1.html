@@ -20,6 +20,34 @@
       color: #333;
     }
 
+    /* Navigation Bar Styling */
+    .navbar {
+      background-color: #1e1e2f;
+      overflow: hidden;
+      display: flex;
+      justify-content: center; /* Center the links */
+      align-items: center; /* Center vertically */
+      height: 50px; /* Set a fixed height */
+      margin-bottom: 2em; /* Add some space below navbar */
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .navbar a:hover {
+      background-color: #f4d35e;
+      color: #000;
+    }
+
     .container {
       max-width: 700px;
       background: #fff;
@@ -93,7 +121,7 @@
       color: #000;
     }
 
-        .contact-icons {
+    .contact-icons {
       margin-top: 1em;
     }
 
@@ -110,18 +138,23 @@
     .contact-icons img {
       width: 30px;
       height: 30px;
-      border-radius: 6px; /* Optional: rounded corners */
+      border-radius: 6px;
     }
 
   </style>
 </head>
 <body>
 
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="home.html">Home</a><!-- Portfolio Link -->
+  </div>
+
   <div class="container">
     <img src="DA.webp" alt="John Doe Picture" />
     <h1>Warachaya Wongaree</h1>
     <p><strong>Age:</strong> 19</p>
-    <p><strong>School:</strong> King Mongkut's Institute of Technology Ladkrabang </p>
+    <p><strong>School:</strong> King Mongkut's Institute of Technology Ladkrabang</p>
 
     <h2>Skills</h2>
     <ul>
