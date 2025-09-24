@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple 5-Menu Navbar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+    }
+
+    /* Page content */
+    .content {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#da">Da Page</a>
+    <a href="#bua">Bua Page</a>
+    <a href="#age">Age</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Page Content -->
+  <div class="content" id="page-content">
+    <!-- Content will be loaded here -->
+  </div>
+
+  <!-- Script to handle routing -->
+  <script>
+    const content = document.getElementById("page-content");
+
+    function loadPage() {
+      switch (location.hash) {
+        case "#home":
+        case "":
+          content.innerHTML = "<h2>Welcome to Home</h2><p>This is the home page content.</p>";
+          break;
+        case "#da":
+          content.innerHTML = "<h2>Welcome to Da Page</h2><p>This is the Da page content.</p>";
+          break;
+        case "#bua":
+          content.innerHTML = "<h2>Welcome to Bua Page</h2><p>This is the Bua page content.</p>";
+          break;
+        case "#age":
+          content.innerHTML = "<h2>Age Page</h2><p>This is the age page content.</p>";
+          break;
+        case "#contact":
+          content.innerHTML = "<h2>Contact Page</h2><p>This is the contact page content.</p>";
+          break;
+        default:
+          content.innerHTML = "<h2>Page Not Found</h2><p>The page you're looking for doesn't exist.</p>";
+      }
+    }
+
+    // Handle hash changes and load initial content
+    window.addEventListener("hashchange", loadPage);
+    window.addEventListener("DOMContentLoaded", loadPage);
+  </script>
+
+</body>
+</html>
