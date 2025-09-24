@@ -6,112 +6,227 @@
   <title>My Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Body styles */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f5f7fa;
+      background: #ffffff;
       color: #333;
+      overflow-x: hidden;
     }
 
+    /* Navbar styles */
     .navbar {
-      background-color: #1e1e2f;
-      overflow: hidden;
+      background: #2c3e50;
       display: flex;
-      justify-content: center; /* Center the links */
-      align-items: center; /* Center vertically */
-      height: 50px; /* Set a fixed height */
-      margin-bottom: 2em; /* Add some space below navbar */
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .navbar a {
       color: white;
       text-decoration: none;
-      padding: 14px 20px;
+      padding: 16px 30px;
       font-size: 18px;
       font-weight: bold;
-      text-align: center;
-      transition: background-color 0.3s ease;
-      display: inline-block;
       text-transform: uppercase;
+      margin: 0 20px;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: #f39c12; /* Gold accent */
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease-out;
     }
 
     .navbar a:hover {
-      background-color: #f4d35e;
-      color: #000;
+      color: #f39c12; /* Gold accent */
     }
 
-    .navbar a:hover {
-      color: #f4d35e;
+    .navbar a:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
     }
 
+    /* Header styles */
     h1 {
       text-align: center;
-      margin: 2em 0 1em;
-      font-size: 2.5em;
-      color: #222;
+      margin-top: 60px;
+      font-size: 4em;
+      font-weight: 800;
+      color: #2c3e50;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
+    /* Portfolio grid */
     .portfolio {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 2em;
-      padding: 2em;
+      gap: 4em;
+      padding: 4em;
+      margin-top: 30px;
     }
 
+    /* CV Card Styles */
     .cv-card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 250px;
-      transition: transform 0.3s ease;
+      position: relative;
+      width: 320px;
+      height: 420px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
       cursor: pointer;
-      padding: 1em;
-      text-align: center;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease, box-shadow 0.4s ease;
     }
 
     .cv-card:hover {
-      transform: translateY(-5px);
+      transform: scale(1.1) rotateY(10deg);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
     }
 
-    .cv-card img {
+    /* Front side of card */
+    .cv-card .front {
+      position: absolute;
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 1em;
+      height: 100%;
+      background: #ffffff;
+      backface-visibility: hidden;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
 
-    .cv-card h3 {
-      margin: 0.5em 0 0.2em;
-      color: #333;
+    .cv-card .front img {
+      width: 250px; /* Fixed size of the image */
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      margin-top: 10px;
     }
 
-    .cv-card p {
-      color: #777;
-      font-size: 0.9em;
+    .cv-card .front h3 {
+      font-size: 1.8em;
+      color: #2c3e50;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
     }
+
+    .cv-card .front p {
+      color: #7f8c8d;
+      font-size: 1.1em;
+      margin-top: 10px;
+    }
+
+    /* Back side of card */
+    .cv-card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #f39c12, #e74c3c); /* Gold and red */
+      color: white;
+      font-size: 1.4em;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      backface-visibility: hidden;
+      transform: rotateY(180deg);
+      border-radius: 20px;
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .cv-card .back p {
+      font-size: 1.2em;
+      color: #ecf0f1;
+      font-weight: 600;
+    }
+
+    /* Hover effects for flipping */
+    .cv-card:hover .front {
+      transform: rotateY(180deg);
+    }
+
+    .cv-card:hover .back {
+      transform: rotateY(0);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .portfolio {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cv-card {
+        width: 80%;
+        height: auto;
+      }
+
+      .cv-card .front img {
+        height: 220px;
+      }
+    }
+
   </style>
 </head>
 <body>
+
   <div class="navbar">
-    <a href="CV1.html">  Warachaya</a>
-    <a href="CV2.html">  Pawaran</a>
+    <a href="CV1.html">Warachaya</a>
+    <a href="CV2.html">Pawaran</a>
   </div>
+
   <h1>Welcome to My Portfolio</h1>
 
   <div class="portfolio">
     <div class="cv-card" onclick="location.href='CV1.html'">
-      <img src="DA.webp" width="150" height="270" alt="CV1 Photo">
-      <h3>Warachaya</h3>
-      <p>Business Student</p>
+      <div class="front">
+        <img src="DA.webp" alt="Warachaya's Photo">
+        <h3>Warachaya</h3>
+        <p>Business Student</p>
+      </div>
+      <div class="back">
+        <p>Click to know more about Warachaya!</p>
+      </div>
     </div>
 
     <div class="cv-card" onclick="location.href='CV2.html'">
-      <img src="Bua.webp" width="150" height="270"  alt="CV2 Photo">
-      <h3>Pawaran</h3>
-      <p>Business Student</p>
+      <div class="front">
+        <img src="Bua.webp" alt="Pawaran's Photo">
+        <h3>Pawaran</h3>
+        <p>Business Student</p>
+      </div>
+      <div class="back">
+        <p>Click to know more about Pawaran!</p>
+      </div>
     </div>
   </div>
 
 </body>
 </html>
+
